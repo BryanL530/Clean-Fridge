@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{list_name}} | Clean Fridge</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='bootstrap/css/variables.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='bootstrap/css/styles.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='bootstrap/css/navigation.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='bootstrap/css/pop-up.css')}}"
+    />
+    <script
+      src="{{url_for('static', filename='bootstrap/js/script.js')}}"
+      defer
+    ></script>
+    <script
+      src="{{url_for('static', filename='bootstrap/js/navigation.js')}}"
+      defer
+    ></script>
+    <script
+      src="{{url_for('static', filename='bootstrap/js/search-bar.js')}}"
+      defer
+    ></script>
+    <script
+      src="{{url_for('static', filename='bootstrap/js/pop-up.js')}}"
+      defer
+    ></script>
+  </head>
+  <body>
+    {% include "nav_bar.html" %}
+    {% include "searchbar.html" %}
+    {% include "pop_up.html" %}
+    {% with section=list_name %} {%include "section.html" %} {% endwith %}
+  </body>
+</html>

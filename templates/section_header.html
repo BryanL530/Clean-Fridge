@@ -1,0 +1,9 @@
+<div class="section-header">
+    <h2 class="title">{{section}}</h2>
+    {% if section_action is defined %}
+      <div class="section-more">
+        <button class="section-button {{section_type|default('add-button', true)}}" onclick="{{section_action}}"></button>
+      </div>
+    {% endif %}
+  </div>
+  <hr class="section-hr" />

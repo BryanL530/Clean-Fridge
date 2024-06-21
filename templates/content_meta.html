@@ -1,0 +1,24 @@
+<div class="content-meta">
+  <div class="section-header">
+    <h1 id="content-name" class="title">{{title}}</h1>
+    <div class="section-more">
+      <button class="section-button more-button"></button>
+      <div class="section-options">
+        <button onclick="{{meta_action}}">Edit {{resource}}</button>
+        {% if editable %}
+          <button onclick="editPermission();">Edit Permission</button>
+        {% endif %}
+        <button onclick="deleteContent();">Delete {{resource}}</button>
+      </div>
+    </div>
+  </div>
+  {% if description is defined or description != '' %}
+    <p class="description">{{description}}</p>
+  {% endif %}
+  <div class="title-tag-container">
+    {% for tag in tags %}
+      <p>#{{tag}}</p>
+    {% endfor %}
+  </div>
+  <hr />
+</div>

@@ -1,0 +1,7 @@
+:root {
+    --test-color:rgb(125, 255, 230);
+}
+
+body {
+    background-color: var(--test-color);
+}

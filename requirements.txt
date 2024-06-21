@@ -1,0 +1,8 @@
+Flask
+gunicorn
+Werkzeug
+python-dotenv
+azure-cosmos
+google-auth-oauthlib
+CacheControl
+google-auth

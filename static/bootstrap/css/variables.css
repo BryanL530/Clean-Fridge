@@ -1,0 +1,8 @@
+:root {
+  --default-background: white;
+  --default-card-bg: white;
+  --nav-height: 90px;
+  --default-ui-color: rgba(217, 217, 217, 0.75);
+  --ui-selected-color: #24A0ED;
+  --ui-warning-color: #ED4337;
+}

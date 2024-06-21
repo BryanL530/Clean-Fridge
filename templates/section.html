@@ -1,0 +1,22 @@
+{% include "section_header.html" %}
+{% for content in content_list %}
+  <a class="content collection" href="{{url_for(resource|default('index', true), id=content.id, owner=content.owner_id)}}">
+    <div class="img-container">
+      {% if resource == "find_item" %}
+        <img class="exp-icon" src="{{url_for('static', filename='images/clock.svg')}}" alt="Expiring Soon" style="{{content.groups|exp_warning}}">
+      {% endif %}
+    </div>
+
+    <div class="content-text-group">
+      <p class="content-name collection-name">{{content.name}}</p>
+      <p class="content-tag content-text">
+        {% for tag in content.tags %}
+          #{{tag}} 
+        {% endfor %}
+      </p>
+      <p class="content-counter content-text">{{counter}}: {{content.count}}</p>
+    </div>
+    <img class="content-right-icon" src="{{url_for('static', filename='images/chevron-right.svg')}}">
+  </a>
+{% endfor %}
+

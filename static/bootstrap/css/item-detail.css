@@ -1,0 +1,23 @@
+.key-value-pair {
+  margin: 0.5em 24px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.overview-text {
+  font-size: 18px;
+}
+
+.group-name {
+  margin: 12px 24px 6px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.group-container {
+  margin: 24px 0;
+}
+
+.section-hr {
+  margin-bottom: 24px;
+}

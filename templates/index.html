@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clean Fridge</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='bootstrap/css/variables.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='bootstrap/css/styles.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='bootstrap/css/pop-up.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='bootstrap/css/navigation.css')}}"
+    />
+    <script src="{{url_for('static', filename='bootstrap/js/script.js')}}" defer></script>
+    <script src="{{url_for('static', filename='bootstrap/js/navigation.js')}}" defer></script>
+    <script src="{{url_for('static', filename='bootstrap/js/pop-up.js')}}" defer></script>
+  </head>
+  <body>
+    {% include "nav_bar.html" %}
+    {% include "pop_up.html" %}
+
+    {% with section="Pinned Storages", resource="find_storage", counter="Items", content_list=pinned_list, section_action="editPinned();", section_type="edit-button" %}
+      {% include "section.html" %}
+    {% endwith %}
+
+    {% with section="Expiring Items", resource="find_item", counter="Count", content_list=item_list|get_exp_list %}
+      {% include "section.html" %}
+    {% endwith %}
+  </body>
+</html>

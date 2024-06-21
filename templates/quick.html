@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quick Action | Clean Fridge</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='bootstrap/css/variables.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='bootstrap/css/styles.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='bootstrap/css/navigation.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='bootstrap/css/pop-up.css')}}"
+    />
+    <script src="{{url_for('static', filename='bootstrap/js/script.js')}}" defer></script>
+    <script src="{{url_for('static', filename='bootstrap/js/item.js')}}" defer></script>
+    <script
+      src="{{url_for('static', filename='bootstrap/js/navigation.js')}}"
+      defer
+    ></script>
+    <script
+      src="{{url_for('static', filename='bootstrap/js/quick-action.js')}}"
+      defer
+    ></script>
+  </head>
+  <body>
+    {% include "nav_bar.html" %}
+    {% include "pop_up.html" %}
+    
+    {% with section="Quick Action", section_action="editQuick();", section_type="edit-button" %}
+      {% include "section_header.html" %}
+    {% endwith%}
+
+    <div id="mode" class="mode-button-unit">
+      <button
+        class="mode-button mode-left"
+        type="button"
+        onclick="this.parentElement.toggleAttribute('remove', false);"
+      >
+        Add
+      </button>
+      <button
+        class="mode-button mode-right"
+        type="button"
+        onclick="this.parentElement.toggleAttribute('remove', true);"
+      >
+        Remove
+      </button>
+      <div class="selected-mode"></div>
+    </div>
+
+    {% for content in content_list %}
+    <div class="content">
+      <input name="id" type="hidden" value="{{content.id}}">
+      <input name="owner" type="hidden" value="{{content.owner_id}}">
+      <div class="img-container">
+        <img
+          class="exp-icon"
+          src="{{url_for('static', filename='images/clock.svg')}}"
+          alt="Expiring Soon"
+          style="{{content.groups|exp_warning}}"
+        />
+      </div>
+
+      <div class="content-text-group">
+        <p class="content-name">{{content.name}}</p>
+        <p class="content-tag content-text">
+          {% for tag in content.tags %} #{{tag}} {% endfor %}
+        </p>
+        <p class="content-counter content-text">
+          Count: {{content.count}}
+        </p>
+      </div>
+      <img
+        class="content-right-icon"
+        src="{{url_for('static', filename='images/chevron-right.svg')}}"
+      />
+    </div>
+    {% endfor %}
+  </body>
+</html>

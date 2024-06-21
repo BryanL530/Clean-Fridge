@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="id" content="{{item_id}}">
+    <meta name="owner-id" content="{{owner_id}}">
+    <title>{{item.name}} | Clean Fridge</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='bootstrap/css/variables.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='bootstrap/css/styles.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='bootstrap/css/navigation.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='bootstrap/css/item-meta.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='bootstrap/css/item-detail.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='bootstrap/css/pop-up.css')}}"
+    />
+    <script src="{{url_for('static', filename='bootstrap/js/script.js')}}" defer></script>
+    <script
+      src="{{url_for('static', filename='bootstrap/js/search-bar.js')}}"
+      defer
+    ></script>
+    <script
+      src="{{url_for('static', filename='bootstrap/js/navigation.js')}}"
+      defer
+    ></script>
+    <script
+      src="{{url_for('static', filename='bootstrap/js/pop-up.js')}}"
+      defer
+    ></script>
+  </head>
+  <body>
+    {% include "nav_bar.html" %}
+    {% include "pop_up.html" %}
+    {% with title=item.name, search_context="Item", tags=item.tags, 
+            description=item.description, meta_action="editItem();", resource="Item" %}
+      {% include "content_meta.html" %}
+      {% include "searchbar.html" %}
+    {% endwith %}
+
+    {% with section="Overview" %}
+      {% include "section_header.html" %}
+    {% endwith %}
+
+    <div class="key-value-pair">
+      <p class="overview-text">Soonest Expiration</p>
+      <p class="overview-text">{{item.groups|soon_exp}}</p>
+    </div>
+    <div class="key-value-pair">
+      <p class="overview-text">Total Count</p>
+      <p class="overview-text">{{item.groups|sum(attribute='count')}}</p>
+    </div>
+
+    {% with section="Groups", section_type="edit-button", section_action="editGroup();" %}
+      {% include "section_header.html" %}
+    {% endwith %}
+    {% for group in item.groups %}
+      <div class="group-container collection">
+        <p class="group-name collection-name">{{group.name}}</p>
+        <div class="key-value-pair">
+          <p>Expiration Date</p>
+          <p>{{group.exp | time_format}}</p>
+        </div>
+        <div class="key-value-pair">
+          <p>Count</p>
+          <p>{{group.count}}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </body>
+</html>

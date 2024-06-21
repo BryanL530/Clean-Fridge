@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clean Fridge | Search Result</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='bootstrap/css/variables.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='bootstrap/css/styles.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='bootstrap/css/navigation.css')}}"
+    />
+    <script
+      src="{{url_for('static', filename='bootstrap/js/navigation.js')}}"
+      defer
+    ></script>
+  </head>
+  <body>
+    {% include "nav_bar.html" %}
+    <h2 class="title">Search Results for "{{query}}"</h2>
+    <h2 class="subtitle">Matching Content: {{storage_list|length + item_list|length}}</h2>
+
+
+    {% with section="Storages", content_list=storage_list, counter="Item" %}
+      {% if content_list|length > 0 %}
+        {% include "section.html" %}
+      {% endif %}
+    {% endwith %}
+    {% with section="Items", content_list=item_list, counter="Count" %}
+      {% if content_list|length > 0 %}
+        {% include "section.html" %}
+      {% endif %}
+    {% endwith %}
+  </body>
+</html>

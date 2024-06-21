@@ -1,0 +1,283 @@
+#pop-up {
+  background-color: white;
+  height: 100dvh;
+  width: 100vw;
+  position: fixed;
+  top: 100%;
+  z-index: 5;
+  transition: top 200ms;
+  margin: 0;
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+
+#pop-up[open] {
+  top: 0;
+}
+
+.pop-up-top-wrapper {
+  position: relative;
+  height: var(--nav-height);
+  width: 100vw;
+}
+
+.pop-up-top {
+  position: fixed;
+  height: var(--nav-height);
+  width: 100vw;
+  background-color: var(--default-ui-color);
+  z-index: 6;
+}
+
+#pop-up-title {
+  position: absolute;
+  bottom: 12px;
+  left: 72px;
+  right: 72px;
+  text-align: center;
+  font-size: 24px;
+  line-height: 1em;
+  text-wrap: nowrap;
+}
+
+#pop-up-close {
+  position: absolute;
+  height: 24px;
+  bottom: 12px;
+  right: 24px;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+}
+
+.pop-up-section {
+  margin: 24px 0;
+  padding: 0 24px;
+  position: relative;
+}
+
+.pop-up-section > p:first-of-type {
+  font-size: 24px;
+  line-height: 1em;
+}
+
+.pop-up-section > p:not(:first-of-type) {
+  margin-top: 1em;
+}
+
+.pop-up-section > p:not(:first-of-type) + input:not([type="button"]) {
+  margin-top: 0.25em;
+}
+
+.pop-up-section > input:not([type="button"], [name="tag"]), .pop-up-section > select,
+.email-input {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+  height: 2em;
+  line-height: 1em;
+  padding: 0.5em;
+  border: none;
+  background-color: var(--default-ui-color);
+  margin-top: 12px;
+}
+
+#description {
+  background-color: var(--default-ui-color);
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  font-size: 16px;
+  height: 6em;
+  padding: 0.5em 0.5em;
+  line-height: 1.5em;
+  height: 8.5em;
+  margin-top: 12px;
+}
+
+input[name="tag"] {
+  width: 50%;
+  display: block;
+  box-sizing: border-box;
+  font-size: 16px;
+  height: 2em;
+  line-height: 1em;
+  padding: 0.5em;
+  border: none;
+  background-color: var(--default-ui-color);
+  margin-top: 12px;
+}
+
+#add-content {
+  margin-top: 12px;
+  padding: 4px;
+  border: none;
+  background: none;
+}
+
+#add-content > * {
+  display: inline-block;
+  line-height: 16px;
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+#add-content > p {
+  margin-left: 0.25em;
+}
+
+.pop-up-action {
+  padding: 0 24px;
+  margin: 24px 0;
+}
+
+.pop-up-action > #add-content:first-child {
+  margin-top: 0;
+}
+
+#done-button {
+  padding: 0.5em 1em;
+  font-size: 16px;
+  color: white;
+  border: none;
+  background-color: var(--ui-selected-color);
+  margin-right: 0.5em;
+}
+
+#delete-button {
+  padding: 0.5em 1em;
+  font-size: 16px;
+  color: white;
+  border: none;
+  background-color: var(--ui-warning-color);
+  margin-right: 0.5em;
+}
+
+#cancel-button {
+  padding: 0.5em 1em;
+  font-size: 16px;
+  border: none;
+}
+
+.pop-up-section > p:has(+ input[required])::after {
+  content: "*";
+  color: var(--ui-warning-color);
+}
+
+.check-box-container {
+  margin: 0.5em 0;
+  font-size: 20px;
+  line-height: 1em;
+}
+
+.check-box-container > input[type="checkbox"]{
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  margin-right: 0.5em;
+}
+
+.delete-group-button {
+  position: absolute;
+  top: 0;
+  right: 24px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: none;
+  background-image: url(../../images/trash-2.svg);
+}
+
+.permission-title {
+  font-size: 24px;
+  line-height: 1em;
+  margin: 0.75em 0 0.5em;
+  padding: 0 24px;
+  font-weight: 500;
+}
+
+.user-info {
+  overflow: auto;
+  position: relative;
+  padding: 0 24px;
+  margin: 12px 0;
+}
+
+.user-info + #add-content,
+.permission-title + #add-content {
+  margin-left: 24px;
+}
+
+.user-name, .user-email {
+  font-size: 16px;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-name {
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.user-picture {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  float: left;
+  clear: both;
+  margin-right: 16px;
+}
+
+.delete-user-button {
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  right: 24px;
+  top: calc(50% - 12px);
+}
+
+.background-cancel {
+  position: fixed;
+  width: 100dvw;
+  height: 100dvh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 7;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.warning-window {
+  padding: 1em;
+  width: 90%;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.warning-window:has(form) input[type="submit"] {
+  margin-top: 1em;
+}
+
+.warning-window:has(form) .warning-title,
+.warning-window:has(form) .warning-text {
+  margin: 0;
+}
+
+.warning-title {
+  font-size: 20px;
+  line-height: 1.5em;
+  font-weight: 600;
+  margin-bottom: 0.25em;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.warning-text {
+  font-size: 16px;
+  margin-bottom: 0.75em;
+}
